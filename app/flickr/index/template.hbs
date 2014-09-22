@@ -1,13 +1,13 @@
-<ul id='todo-list'>
-  {{#each itemController='todos/item-controller'}}
+<ul id='flickr-list'>
+  {{#each itemController='flickr/item-controller'}}
     <li {{bind-attr class='isCompleted:completed isEditing:editing'}}>
       {{#if isEditing}}
         {{edit-todo class='edit' value=title focus-out='acceptChanges'
                                  insert-newline='acceptChanges'}}
       {{else}}
-        {{input type='checkbox' checked=isCompleted class='toggle'}}
         <label {{action 'editTodo' on='doubleClick'}}>{{title}}</label>
-        <button {{action 'removeTodo'}} class='destroy'></button>
+        <!--<button {{action 'removeTodo'}} class='destroy'></button>-->
+        {{link-to '{title}' 'flickr.index' activeClass='selected'}}
       {{/if}}
     </li>
   {{/each}}

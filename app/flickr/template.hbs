@@ -1,8 +1,10 @@
-<section id='todoapp'>
+<section id='flickrapp'>
   <header id='header'>
-    <h1>todos</h1>
-    {{input type='text' id='new-todo' placeholder='What needs to be done?'
+    <h1>Flickr</h1>
+    <!--
+    {{input type='text' id='new-flickr' placeholder='What needs to be done?'
             value=newTitle action='createTodo'}}
+    -->
   </header>
 
   <section id='main'>
@@ -12,18 +14,18 @@
   </section>
 
   <footer id='footer'>
-    <span id='todo-count'>
+    <span id='flickr-count'>
       <strong>{{active.length}}</strong> {{inflection}} left
     </span>
     <ul id='filters'>
       <li>
-        {{link-to 'All' 'todos.index' activeClass='selected'}}
+        {{link-to 'All' 'flickr.index' activeClass='selected'}}
       </li>
       <li>
-        {{link-to 'Active' 'todos.active' activeClass='selected'}}
+        {{link-to 'Active' 'flickr.active' activeClass='selected'}}
       </li>
       <li>
-        {{link-to 'Completed' 'todos.completed' activeClass='selected'}}
+        {{link-to 'Completed' 'flickr.completed' activeClass='selected'}}
       </li>
     </ul>
 
@@ -36,5 +38,5 @@
 </section>
 
 <footer id='info'>
-  <p>Double-click to edit a todo</p>
+  <p>Double-click to edit a flickr</p>
 </footer>

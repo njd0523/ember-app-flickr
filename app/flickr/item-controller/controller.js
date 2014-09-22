@@ -1,9 +1,8 @@
-// controllers/todo.js
 var equal = Ember.computed.equal;
 var and = Ember.computed.and;
 
 export default Ember.ObjectController.extend({
-  needs: ['todos'],
+  needs: ['flickr'],
   isCompleted: function(key, value){
     var model = this.get('model');
 
@@ -18,7 +17,7 @@ export default Ember.ObjectController.extend({
     }
   }.property('model.isCompleted'),
 
-  isLastRemaining: and(equal('controllers.todos.active.length', 1),
+  isLastRemaining: and(equal('controllers.flickr.active.length', 1),
                        equal('isCompleted', false)),
   isEditing: false,
 
@@ -27,9 +26,9 @@ export default Ember.ObjectController.extend({
       this.set('isEditing', true);
     },
     removeTodo: function () {
-      var todo = this.get('model');
-      todo.deleteRecord();
-      todo.save();
+      var flickr = this.get('model');
+      flickr.deleteRecord();
+      flickr.save();
     },
     acceptChanges: function () {
       this.set('isEditing', false);

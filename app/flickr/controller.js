@@ -1,5 +1,3 @@
-// controllers/todos.js
-
 var isEmpty  = Ember.isEmpty;
 var filterBy = Ember.computed.filterBy;
 var notEmpty = Ember.computed.notEmpty;
@@ -26,7 +24,7 @@ export default Ember.ArrayController.extend({
 
   actions: {
     createTodo: function () {
-      // Get the todo title set by the "New Todo" text field
+      // Get the flickr title set by the "New Todo" text field
       var title = this.get('newTitle');
       if (title && !title.trim()) { 
         this.set('newTitle', ''); 
@@ -34,7 +32,7 @@ export default Ember.ArrayController.extend({
       }
 
       // Create the new Todo model
-      var todo = this.store.createRecord('todo', {
+      var flickr = this.store.createRecord('flickr', {
         title: title,
         isCompleted: false
       });
@@ -43,7 +41,7 @@ export default Ember.ArrayController.extend({
       this.set('newTitle', '');
 
       // Save the new model
-      todo.save();
+      flickr.save();
     },
 
     clearCompleted: function () {

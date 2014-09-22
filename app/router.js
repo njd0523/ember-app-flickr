@@ -1,10 +1,10 @@
-var Router = Ember.Router.extend(); // ensure we don't share routes between all Router instances
+var Router = Ember.Router.extend();
 
 Router.map(function(){
-  this.resource('todos', { path: '/' }, function() {
-    // additional child routes
-    this.route('active');
-    this.route('completed');
+  this.resource('flickr', { path: '/brands' }, function() {
+    this.route('active', { path: '/:brand-id' });
+    this.route('search', { path: '/:brand-id/search' });
+    this.route('completed', { path: '/:brand-id/search/:page' });
   });
 });
 
