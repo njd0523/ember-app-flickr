@@ -1,20 +1,36 @@
-{{#each itemController='flickr/item-controller'}}
+<div class="row">
+  <div class="col-xs-6 col-sm-2">
 	<ul id='flickr-list'>
-	    <li>
-		{{#link-to 'flickr.active' id}}{{title}}{{/link-to}} 
-	    </li>
-	</ul>
-
-	<ul {{bind-attr id=id}}>
-	    {{#each brands}}
-	    <li>
-	    {{#link-to 'flickr.search' brand}}{{title}}{{/link-to}}
-	    </li>
-	    {{/each}}
-	</ul>
-	<url {{bind-attr id=id}}>
-	{{#each images}}
-		<li><img class="result" {{bind-attr src=src}}></li>
+	{{#each itemController='flickr/item-controller'}}
+		<li>
+			{{#link-to 'flickr.active' id}}{{title}}{{/link-to}} 
+		</li>
 	{{/each}}
 	</ul>
-{{/each}}
+  </div>
+  <div class="col-xs-6 col-sm-3">
+	<ul id="brands">
+	{{#each itemController='flickr/item-controller'}}
+		    {{#each brands}}
+		    <li {{bind-attr class="brand"}}>
+		    {{#link-to 'flickr.search' brand}}{{title}}{{/link-to}}
+		    </li>
+		    {{/each}}
+
+	{{/each}}
+	</ul>
+  </div>
+  <div class="clearfix visible-xs-block"></div>
+  <div class="col-xs-6 col-sm-7">
+	<ul id="image">
+	{{#each itemController='flickr/item-controller'}}
+		{{#each images}}
+			<li {{bind-attr class="brand"}}><img class="result" {{bind-attr src=src}}></li>
+		{{/each}}
+	{{/each}}
+	</ul>
+  </div>
+</div>
+
+
+

@@ -32,8 +32,6 @@ export default Ember.Route.extend({
                 });
             });
 
-            //console.log(self.store.find('flickr', query).get('brands'));
-
         return this.store.find('flickr');
   },
   renderTemplate: function(controller){
