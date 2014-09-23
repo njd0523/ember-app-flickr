@@ -1,14 +1,20 @@
-<ul id='flickr-list'>
-  {{#each itemController='flickr/item-controller'}}
-    <li {{bind-attr class='isCompleted:completed isEditing:editing'}}>
-      {{#if isEditing}}
-        {{edit-todo class='edit' value=title focus-out='acceptChanges'
-                                 insert-newline='acceptChanges'}}
-      {{else}}
-        <label {{action 'editTodo' on='doubleClick'}}>{{title}}</label>
-        <!--<button {{action 'removeTodo'}} class='destroy'></button>-->
-        {{link-to '{title}' 'flickr.index' activeClass='selected'}}
-      {{/if}}
-    </li>
-  {{/each}}
-</ul>
+{{#each itemController='flickr/item-controller'}}
+	<ul id='flickr-list'>
+	    <li>
+		{{#link-to 'flickr.active' id}}{{title}}{{/link-to}} 
+	    </li>
+	</ul>
+
+	<ul {{bind-attr id=id}}>
+	    {{#each brands}}
+	    <li>
+	    {{#link-to 'flickr.search' brand}}{{title}}{{/link-to}}
+	    </li>
+	    {{/each}}
+	</ul>
+	<url {{bind-attr id=id}}>
+	{{#each images}}
+		<li><img class="result" {{bind-attr src=src}}></li>
+	{{/each}}
+	</ul>
+{{/each}}

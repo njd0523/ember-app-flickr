@@ -5,7 +5,7 @@ export default Ember.Route.extend({
             method = 'flickr.cameras.getBrands',
             api_key = '854f6c3ae2c026056f93eb20036ce07c',
             url = base_url + 'method=' + method + '&api_key=' + api_key + '&format=json&nojsoncallback=1';
-
+            
         Ember.$.getJSON(url).then(function (data) {
             $.each(data.brands.brand, function (i, item) {
                 self.store.createRecord('flickr', { id: item.id, title: item.name});

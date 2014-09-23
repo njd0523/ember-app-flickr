@@ -33,6 +33,10 @@ export default Ember.ObjectController.extend({
     acceptChanges: function () {
       this.set('isEditing', false);
       this.get('model').save();
+    },
+    setSearch: function () {
+    var self = this;
+      self.transitionToRoute('flickr.search', {queryParams: { query : this.get('model').get('title')} });
     }
   }
 });

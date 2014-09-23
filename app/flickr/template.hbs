@@ -1,10 +1,6 @@
 <section id='flickrapp'>
   <header id='header'>
     <h1>Flickr</h1>
-    <!--
-    {{input type='text' id='new-flickr' placeholder='What needs to be done?'
-            value=newTitle action='createTodo'}}
-    -->
   </header>
 
   <section id='main'>
@@ -12,31 +8,4 @@
 
     {{input type='checkbox' id='toggle-all' checked=allAreDone}}
   </section>
-
-  <footer id='footer'>
-    <span id='flickr-count'>
-      <strong>{{active.length}}</strong> {{inflection}} left
-    </span>
-    <ul id='filters'>
-      <li>
-        {{link-to 'All' 'flickr.index' activeClass='selected'}}
-      </li>
-      <li>
-        {{link-to 'Active' 'flickr.active' activeClass='selected'}}
-      </li>
-      <li>
-        {{link-to 'Completed' 'flickr.completed' activeClass='selected'}}
-      </li>
-    </ul>
-
-    {{#if hasCompleted}}
-      <button id='clear-completed' {{action 'clearCompleted'}}>
-        Clear completed ({{completed.length}})
-      </button>
-    {{/if}}
-  </footer>
 </section>
-
-<footer id='info'>
-  <p>Double-click to edit a flickr</p>
-</footer>
