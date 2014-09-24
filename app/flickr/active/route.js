@@ -8,9 +8,15 @@ export default Ember.Route.extend({
         url = base_url + 'method=' + method + '&api_key=' + api_key + '&brand=' + brand + '&format=json&nojsoncallback=1';
     
         if (this.currentModel) {
-            var current = this.currentModel.get('content');
-            //delete the old model
+            self.store.find('flickr', self.temp).then(function (flickr) {
+                if (flickr.get('brandsCompleted')){
+                    flickr.set('brandsCompleted', false);
+                }
+                var temp = flickr.get('brands').get('content');
+                temp.clear();
+            });
         }
+        self.temp = brand;
 
         Ember.$.getJSON(url).then(function (data) {
             self.store.find('flickr', brand).then(function (flickr) {
