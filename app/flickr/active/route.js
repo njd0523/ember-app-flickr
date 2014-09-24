@@ -12,8 +12,13 @@ export default Ember.Route.extend({
                 if (flickr.get('brandsCompleted')){
                     flickr.set('brandsCompleted', false);
                 }
-                var temp = flickr.get('brands').get('content');
-                temp.clear();
+                
+                flickr.get('brands').get('content').clear();
+                
+                if (flickr.get('images').get('content').length > 0){
+                    flickr.get('images').get('content').clear();
+                    flickr.set('current', 0);
+                }
             });
         }
         self.temp = brand;
@@ -22,7 +27,7 @@ export default Ember.Route.extend({
             self.store.find('flickr', brand).then(function (flickr) {
                 if (!flickr.get('brandsCompleted')) {
                     $.each(data.cameras.camera, function (i, item) {
-                        flickr.get('brands').createRecord({id: item.id, title: item.name['_content'], brand: brand});
+                        flickr.get('brands').createRecord({id: brand + '_' + item.id, title: item.name['_content'], brand: brand});
                     });
                     flickr.set('brandsCompleted', true);
                 }

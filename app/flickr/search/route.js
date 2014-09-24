@@ -40,7 +40,7 @@ export default Ember.Route.extend({
                             var brand = data.cameras.brand;
                             $.each(data.cameras.camera, function (i, item) {
                                 self.store.find('flickr', brand).then(function (flickr) {
-                                    flickr.get('brands').createRecord({id: item.id, title: item.name['_content'], brand: brand});
+                                    flickr.get('brands').createRecord({id: brand + '_' + item.id, title: item.name['_content'], brand: brand});
                                 });
                             });
                         });
