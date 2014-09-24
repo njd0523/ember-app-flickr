@@ -1,6 +1,6 @@
 export default Ember.Route.extend({
     model: function (params) {
-        var self = this, method, prev, next,
+        var self = this, method, prev, next, pages, current,
             base_url = 'https://api.flickr.com/services/rest/?',
             api_key = '854f6c3ae2c026056f93eb20036ce07c',
             brand = params['brand-id'],
@@ -10,10 +10,12 @@ export default Ember.Route.extend({
             Ember.$.getJSON(url).then(function (data) {
                 var src = '';
                 self.store.find('flickr', brand).then(function (flickr) {
-                    flickr.set('pages', data.photos.pages);
-                    flickr.set('current', data.photos.page);
-                    prev = (parseInt(data.photos.page, 10) - 1 === 0) ? 1 : parseInt(data.photos.page, 10) - 1;
-                    next = (parseInt(data.photos.page, 10) + 1 === parseInt(data.photos.pages, 10)) ? parseInt(data.photos.pages, 10) : parseInt(data.photos.page, 10) + 1;
+                    pages = (parseInt(data.photos.pages, 10) > 200) ? 200 : data.photos.pages;
+                    current = (parseInt(data.photos.page, 10) > 200) ? 200 : data.photos.page;
+                    prev = (parseInt(current, 10) - 1 === 0) ? 1 : parseInt(current, 10) - 1;
+                    next = (parseInt(current, 10) + 1 > parseInt(pages, 10)) ? parseInt(pages, 10) : parseInt(current, 10) + 1;
+                    flickr.set('pages', pages);
+                    flickr.set('current', current);
                     flickr.set('prev', prev);
                     flickr.set('next', next);
                     if (!flickr.get('imagesCompleted')){
