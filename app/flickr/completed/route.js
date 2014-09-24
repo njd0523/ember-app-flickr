@@ -16,7 +16,6 @@ export default Ember.Route.extend({
                     next = (parseInt(data.photos.page, 10) + 1 === parseInt(data.photos.pages, 10)) ? parseInt(data.photos.pages, 10) : parseInt(data.photos.page, 10) + 1;
                     flickr.set('prev', prev);
                     flickr.set('next', next);
-                    if (parseInt(data.photos.page, 10) - 1 === 0)
                     if (!flickr.get('imagesCompleted')){
                         $.each(data.photos.photo, function (i, item) {
                             src = "http://farm" + item.farm + ".static.flickr.com/" + item.server + "/" + item.id + "_" + item.secret + "_m.jpg";
