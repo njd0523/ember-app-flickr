@@ -7,6 +7,10 @@ export default Ember.Route.extend({
         brand = params['brand-id'],
         url = base_url + 'method=' + method + '&api_key=' + api_key + '&brand=' + brand + '&format=json&nojsoncallback=1';
     
+        if (this.currentModel) {
+            var current = this.currentModel.get('content');
+            //delete the old model
+        }
 
         Ember.$.getJSON(url).then(function (data) {
             self.store.find('flickr', brand).then(function (flickr) {
@@ -24,7 +28,3 @@ export default Ember.Route.extend({
     this.render('flickr/index', {controller: controller});
   }
 });
-
-function active(flickr) {
-  return !flickr.get('isCompleted');
-}

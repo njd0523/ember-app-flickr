@@ -34,8 +34,8 @@ export default Ember.Route.extend({
 
                     // IF directly hit the search link
                     if (flickr.get('brands').get('content').length === 0) {
-                        method = 'flickr.cameras.getBrandModels',
-                        url = base_url + 'method=' + method + '&api_key=' + api_key + '&brand=' + params['brand-id'] + '&format=json&nojsoncallback=1';
+                        method = 'flickr.cameras.getBrandModels';
+                        url = base_url + 'method=' + method + '&api_key=' + api_key + '&brand=' + brand + '&format=json&nojsoncallback=1';
                         Ember.$.getJSON(url).then(function (data) {
                             var brand = data.cameras.brand;
                             $.each(data.cameras.camera, function (i, item) {
