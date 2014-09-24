@@ -23,7 +23,13 @@
   <div class="clearfix visible-xs-block"></div>
   <div class="col-xs-6 col-sm-7">
 	<ul id="image">
+
 	{{#each itemController='flickr/item-controller'}}
+    {{#if current}}<li class="pagnation"> 
+        {{#if prev}}{{#link-to 'flickr.completed' id prev}}<span class="glyphicon glyphicon-chevron-left"></span>{{/link-to}}{{/if}}
+            {{current}} / {{pages}} 
+        {{#if next}}{{#link-to 'flickr.completed' id next}}<span class="glyphicon glyphicon-chevron-right"></span>{{/link-to}}{{/if}}
+    </li>{{/if}}
 		{{#each images}}
 			<li {{bind-attr class="brand"}}><img class="result" {{bind-attr src=src}}></li>
 		{{/each}}

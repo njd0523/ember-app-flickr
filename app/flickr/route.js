@@ -8,7 +8,7 @@ export default Ember.Route.extend({
             
         Ember.$.getJSON(url).then(function (data) {
             $.each(data.brands.brand, function (i, item) {
-                self.store.createRecord('flickr', { id: item.id, title: item.name});
+                self.store.createRecord('flickr', { id: item.id, title: item.name, brandsCompleted: false, imagesCompleted: false, current: 0, pages: 0, prev: 1, next: 1});
             });
         });
         return this.store.find('flickr');
