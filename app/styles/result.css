@@ -1,4 +1,13 @@
-.image {
+.thumbnail {
     height: 250px;
     text-align: center;
+}
+.pagination {
+    margin: -20px 0 0 0 !important;
+    display: block !important;
+}
+.list-group-item.active {
+    color: inherit !important;
+    background-color: inherit !important;
+    border-color: #ddd !important;
 }

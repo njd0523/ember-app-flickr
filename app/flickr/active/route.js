@@ -7,12 +7,8 @@ export default Ember.Route.extend({
         brand = params['brand-id'],
         url = base_url + 'method=' + method + '&api_key=' + api_key + '&brand=' + brand + '&format=json&nojsoncallback=1';
     
-        if (this.currentModel) {
+        if (self.currentModel) {
             self.store.find('flickr', self.temp).then(function (flickr) {
-                if (flickr.get('brandsCompleted')){
-                    flickr.set('brandsCompleted', false);
-                }
-                
                 flickr.get('brands').get('content').clear();
                 
                 if (flickr.get('images').get('content').length > 0){
@@ -21,10 +17,11 @@ export default Ember.Route.extend({
                 }
             });
         }
-        self.temp = brand;
+
 
         Ember.$.getJSON(url).then(function (data) {
             self.store.find('flickr', brand).then(function (flickr) {
+                self.temp = brand;
                 if (!flickr.get('brandsCompleted')) {
                     $.each(data.cameras.camera, function (i, item) {
                         flickr.get('brands').createRecord({id: brand + '_' + item.id, title: item.name['_content'], brand: brand});
