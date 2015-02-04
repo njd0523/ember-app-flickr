@@ -42,4 +42,3 @@ grunt test:server
 =======
 ember-app-flickr
 ================
->>>>>>> 7835c8b75546bdc1ebf3b9440d3e6495389d059d
