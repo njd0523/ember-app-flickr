@@ -1,6 +1,7 @@
 ================
 ember-app-flickr
 ================
+================
 # deprecated
 
 the ember-app-kit project is now deprecated in favour of [ember-cli](https://github.com/stefanpenner/ember-cli)
