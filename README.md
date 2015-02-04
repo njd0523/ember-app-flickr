@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+================
+ember-app-flickr
+================
 # deprecated
 
 the ember-app-kit project is now deprecated in favour of [ember-cli](https://github.com/stefanpenner/ember-cli)
@@ -39,6 +41,3 @@ grunt test:server
 * [Emberjs](https://github.com/emberjs/ember.js)
 * [Ember Data](https://github.com/emberjs/data)
 * [Ember App Kit](https://github.com/stefanpenner/ember-app-kit)
-=======
-ember-app-flickr
-================
